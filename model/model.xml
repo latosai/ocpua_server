@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='utf-8'?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+  <NamespaceUris>
+    <Uri>http://examples.freeopcua.github.io</Uri>
+  </NamespaceUris>
+  <Aliases>
+    <Alias Alias="Float">i=10</Alias>
+    <Alias Alias="Organizes">i=35</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+  </Aliases>
+  <UAObject NodeId="i=20003" BrowseName="0:BasicSignals" ParentNodeId="i=85">
+    <DisplayName>BasicSignals</DisplayName>
+    <Description>BasicSignals</Description>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
+      <Reference ReferenceType="Organizes">i=20006</Reference>
+      <Reference ReferenceType="Organizes">i=20011</Reference>
+      <Reference ReferenceType="Organizes">i=20004</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="i=20004" BrowseName="0:Random" ParentNodeId="i=20003">
+    <DisplayName>Random</DisplayName>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">i=20005</Reference>
+      <Reference ReferenceType="HasComponent">i=20001</Reference>
+      <Reference ReferenceType="HasComponent">i=20002</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="i=20005" BrowseName="0:Random0" ParentNodeId="i=20004" DataType="Float">
+    <DisplayName>Random0</DisplayName>
+    <Description>Random0</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+      <Reference ReferenceType="HasComponent">i=20010</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="i=20006" BrowseName="0:CumulativeRandom" ParentNodeId="i=20003">
+    <DisplayName>CumulativeRandom</DisplayName>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">i=20008</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="i=20008" BrowseName="0:CumulativeRandom0" ParentNodeId="i=20006" DataType="Float">
+    <DisplayName>CumulativeRandom0</DisplayName>
+    <Description>CumulativeRandom0</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=20006</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="i=20011" BrowseName="0:Sinusoidal" ParentNodeId="i=20003">
+    <DisplayName>Sinusoidal</DisplayName>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">i=20012</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="i=20012" BrowseName="0:Sinusoidal0" ParentNodeId="i=20011" DataType="Float">
+    <DisplayName>Sinusoidal0</DisplayName>
+    <Description>Sinusoidal0</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=20011</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="i=20001" BrowseName="0:Random1" ParentNodeId="i=20004" DataType="Float">
+    <DisplayName>Random1</DisplayName>
+    <Description>Random1</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="i=20002" BrowseName="0:Random2" ParentNodeId="i=20004" DataType="Float">
+    <DisplayName>Random2</DisplayName>
+    <Description>Random2</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="i=20010" BrowseName="0:Random4" ParentNodeId="i=20005" DataType="Float">
+    <DisplayName>Random4</DisplayName>
+    <Description>Random4</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0.0</uax:Float>
+    </Value>
+  </UAVariable>
+</UANodeSet>
