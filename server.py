@@ -21,45 +21,51 @@ async def main():
     # setup our server
     server = Server()
     await server.init()
+
+    # # setup our own namespace, not really necessary but should as spec
     server.set_endpoint('opc.tcp://0.0.0.0:4840/freeopcua/server/')
+    server.set_server_name('OPC-UA Latos')
+    
+    await server.import_xml('model/model.xml')
 
-    # setup our own namespace, not really necessary but should as spec
-    uri = 'http://examples.freeopcua.github.io'
+
+    server.set_security_policy([
+            ua.SecurityPolicyType.NoSecurity,
+            ua.SecurityPolicyType.Basic256Sha256_SignAndEncrypt,
+            ua.SecurityPolicyType.Basic256Sha256_Sign])
+        
+    idx = await server.get_namespace_index("urn:freeopcua:python:server")
+
+    # setup our own namespace
+    uri = "http://examples.freeopcua.github.io"
     idx = await server.register_namespace(uri)
-
-    myobj = await server.nodes.objects.add_object(idx, 'Simulator')
+    
+    # dev = await server.nodes.objects.add_object(idx, 'Simulator')
     
     
-    variables = {}
-
-    # random variables
-    n_variables = 10
-    variables['random'] = {}
-    random_variables = await myobj.add_object(idx, "RandomVariables")
-    for n_variable in range(n_variables):
-        var_name = 'Random' + str(n_variable)
-        variables['random'][var_name] = await random_variables.add_variable(idx, var_name, 0.1)
-    
-    # periodic variables
-    variables['periodic'] = {}
-    periodic_variables = await myobj.add_object(idx, "PeriodicVariables")
-    variables['periodic']['Sinusoidal'] = await periodic_variables.add_variable(idx, 'Sinusoidal', 0.1)
-   
-       
     _logger.info('Starting server!')
     async with server:
         while True:
             await asyncio.sleep(1)
             
             # random variables
-            for variable in variables['random'].values():
-                await variable.write_value(np.random.randn(1)[0])
+            for n in range(10):
+                node = 'ns=2;i=20001'+str(n)
+                var = server.get_node(node)
+                await var.set_value(np.random.randn(1)[0], ua.VariantType.Float)
 
-            # periodic
-            sec = dt.datetime.now().second
-            sin_value = np.sin(sec * np.pi / 30)
-            await variables['periodic']['Sinusoidal'].write_value(sin_value)
-            
+            # sinusoidal
+            now = dt.datetime.now()
+            today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+            seconds_today = (now - today).total_seconds()
+
+            periods = [30, 60, 600, 3600, 86400]
+            for n in range(5):
+                node = 'ns=2;i=20002'+str(n)
+                var = server.get_node(node)
+                value = np.sin(2 * seconds_today * np.pi / periods[n])
+                await var.set_value(value, ua.VariantType.Float)
+                
 
 if __name__ == '__main__':
 
