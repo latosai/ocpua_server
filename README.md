@@ -25,4 +25,4 @@ sudo apt upgrade
 ## Screen Linux
 Para manter o servidor OPC-UA rodando mesmo depois de fechar o terminal local, é necessário utilizar o screen linux.
 
-https://www.hostinger.com.br/tutoriais/instalar-e-usar-screen-linux
+https://linuxize.com/post/how-to-use-linux-screen/

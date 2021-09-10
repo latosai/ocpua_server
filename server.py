@@ -9,8 +9,6 @@ sys.path.insert(0, "..")
 from asyncua import ua, Server
 from asyncua.common.methods import uamethod
 
-
-
 @uamethod
 def func(parent, value):
     return value * 2
@@ -66,6 +64,19 @@ async def main():
                 value = np.sin(2 * seconds_today * np.pi / periods[n])
                 await var.set_value(value, ua.VariantType.Float)
                 
+            # random int
+            for n in range(5):
+                node = 'ns=2;i=20003'+str(n)
+                var = server.get_node(node)
+                await var.set_value(np.random.randint(100, size=1)[0], ua.VariantType.Int16)                
+
+            # random event
+            prob = [10, 20, 50, 100, 1000]
+            for n in range(5):
+                node = 'ns=2;i=20004'+str(n)
+                var = server.get_node(node)
+                event = np.random.rand(1)[0] < 1 / prob[n]
+                await var.set_value(event, ua.VariantType.Int16)
 
 if __name__ == '__main__':
 

@@ -224,4 +224,153 @@
     </Value>
   </UAVariable>
 
+
+  <UAObject NodeId="ns=2;i=20003" BrowseName="0:RandomInt" ParentNodeId="ns=2;i=2000">
+    <DisplayName>RandomInt</DisplayName>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=2000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200030</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200031</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200032</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200033</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200034</Reference>
+    </References>
+  </UAObject>
+  
+  <UAVariable NodeId="ns=2;i=200030" BrowseName="0:RandomInt0" ParentNodeId="ns=2;i=20003" DataType="Int16">
+    <DisplayName>RandomInt0</DisplayName>
+    <Description>RandomInt0</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+  
+    <UAVariable NodeId="ns=2;i=200031" BrowseName="0:RandomInt1" ParentNodeId="ns=2;i=20003" DataType="Int16">
+    <DisplayName>RandomInt1</DisplayName>
+    <Description>RandomInt1</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
+    <UAVariable NodeId="ns=2;i=200032" BrowseName="0:RandomInt2" ParentNodeId="ns=2;i=20003" DataType="Int16">
+    <DisplayName>RandomInt2</DisplayName>
+    <Description>RandomInt2</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
+    <UAVariable NodeId="ns=2;i=200033" BrowseName="0:RandomInt3" ParentNodeId="ns=2;i=20003" DataType="Int16">
+    <DisplayName>RandomInt3</DisplayName>
+    <Description>RandomInt3</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200034" BrowseName="0:RandomInt4" ParentNodeId="ns=2;i=20003" DataType="Int16">
+    <DisplayName>RandomInt4</DisplayName>
+    <Description>RandomInt4</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20003</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
+
+
+  <UAObject NodeId="ns=2;i=20004" BrowseName="0:Event" ParentNodeId="ns=2;i=2000">
+    <DisplayName>Event</DisplayName>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=2000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200040</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200041</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200042</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200043</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200044</Reference>
+    </References>
+  </UAObject>
+  
+  <UAVariable NodeId="ns=2;i=200040" BrowseName="0:Event0" ParentNodeId="ns=2;i=20004" DataType="Int16">
+    <DisplayName>Event0</DisplayName>
+    <Description>Event0</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+  
+  <UAVariable NodeId="ns=2;i=200041" BrowseName="0:Event1" ParentNodeId="ns=2;i=20004" DataType="Int16">
+    <DisplayName>Event1</DisplayName>
+    <Description>Event1</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200042" BrowseName="0:Event2" ParentNodeId="ns=2;i=20004" DataType="Int16">
+    <DisplayName>Event2</DisplayName>
+    <Description>Event2</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200043" BrowseName="0:Event3" ParentNodeId="ns=2;i=20004" DataType="Int16">
+    <DisplayName>Event3</DisplayName>
+    <Description>Event3</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200044" BrowseName="0:Event4" ParentNodeId="ns=2;i=20004" DataType="Int16">
+    <DisplayName>Event4</DisplayName>
+    <Description>Event4</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20004</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Int16>0</uax:Int16>
+    </Value>
+  </UAVariable>
+
 </UANodeSet>
