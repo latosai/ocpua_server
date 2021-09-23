@@ -20,14 +20,17 @@ class SubHandler(object):
         print("New event", event)
 
 
-async def main():
-    url = "opc.tcp://3.18.163.196:4840"
+async def connection(url):
     async with Client(url=url) as client:
         _logger.info("Root node is: %r", client.nodes.root)
         _logger.info("Objects node is: %r", client.nodes.objects)
 
         # Node objects have methods to read and write node attributes as well as browse or populate address space
         _logger.info("Children of root are: %r", await client.nodes.root.get_children())
+
+        myvar = await client.nodes.root.get_child(["0:Objects"])
+        print("Children of root are: %r", await myvar.get_children())
+        _logger.info("myvar is: %r", myvar)
 
         # uri = "http://examples.freeopcua.github.io"
         # idx = await client.get_namespace_index(uri)
@@ -46,9 +49,10 @@ async def main():
         # obj = await client.nodes.root.get_child(["0:Objects", "2:MyObject"])
         # _logger.info("myvar is: %r", myvar)
 
-        # node = 'ns=2;i=200031'
-        # myvar = client.get_node(node)
-        
+        node = 'ns=2;i=200031'
+        myvar = client.get_node(node)
+        print("myvar is: %r", myvar)
+
                 
         # # subscribing to a variable node
         # handler = SubHandler()
@@ -64,8 +68,18 @@ async def main():
         # calling a method on server
         # res = await obj.call_method("2:multiply", 3, "klk")
         # _logger.info("method result is: %r", res)
-
-
+        
+    
+        
+async def main():
+    _logger.info("Main started")
+    url = "opc.tcp://3.18.163.196:4840"
+    
+    task_1 = asyncio.create_task(connection(url)) 
+    task_2 = asyncio.create_task(connection(url)) 
+    _logger.info("here")
+    
+    
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
     asyncio.run(main())
+

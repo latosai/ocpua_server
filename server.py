@@ -14,6 +14,40 @@ def func(parent, value):
     return value * 2
 
 
+async def write_to_variables(server):
+    # random variables
+    for n in range(10):
+        node = 'ns=2;i=20001'+str(n)
+        var = server.get_node(node)
+        await var.set_value(np.random.randn(1)[0], ua.VariantType.Float)
+
+    # sinusoidal
+    now = dt.datetime.now()
+    today = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    seconds_today = (now - today).total_seconds()
+
+    periods = [30, 60, 600, 3600, 86400]
+    for n in range(5):
+        node = 'ns=2;i=20002'+str(n)
+        var = server.get_node(node)
+        value = np.sin(2 * seconds_today * np.pi / periods[n])
+        await var.set_value(value, ua.VariantType.Float)
+        
+    # random int
+    for n in range(5):
+        node = 'ns=2;i=20003'+str(n)
+        var = server.get_node(node)
+        await var.set_value(np.random.randint(100, size=1)[0], ua.VariantType.Int16)                
+
+    # random event
+    prob = [10, 20, 50, 100, 1000]
+    for n in range(5):
+        node = 'ns=2;i=20004'+str(n)
+        var = server.get_node(node)
+        event = np.random.rand(1)[0] < 1 / prob[n]
+        await var.set_value(event, ua.VariantType.Int16)
+        
+        
 async def main():
     _logger = logging.getLogger('asyncua')
     # setup our server
@@ -32,11 +66,11 @@ async def main():
             ua.SecurityPolicyType.Basic256Sha256_SignAndEncrypt,
             ua.SecurityPolicyType.Basic256Sha256_Sign])
         
-    idx = await server.get_namespace_index("urn:freeopcua:python:server")
+    # idx = await server.get_namespace_index("urn:freeopcua:python:server")
 
     # setup our own namespace
     uri = "http://examples.freeopcua.github.io"
-    idx = await server.register_namespace(uri)
+    # idx = await server.register_namespace(uri)
     
     # dev = await server.nodes.objects.add_object(idx, 'Simulator')
     
@@ -46,39 +80,12 @@ async def main():
         while True:
             await asyncio.sleep(1)
             
-            # random variables
-            for n in range(10):
-                node = 'ns=2;i=20001'+str(n)
-                var = server.get_node(node)
-                await var.set_value(np.random.randn(1)[0], ua.VariantType.Float)
+            async_write = asyncio.create_task(write_to_variables(server))
+            await async_write                         
+            async_write.cancel()
 
-            # sinusoidal
-            now = dt.datetime.now()
-            today = now.replace(hour=0, minute=0, second=0, microsecond=0)
-            seconds_today = (now - today).total_seconds()
-
-            periods = [30, 60, 600, 3600, 86400]
-            for n in range(5):
-                node = 'ns=2;i=20002'+str(n)
-                var = server.get_node(node)
-                value = np.sin(2 * seconds_today * np.pi / periods[n])
-                await var.set_value(value, ua.VariantType.Float)
-                
-            # random int
-            for n in range(5):
-                node = 'ns=2;i=20003'+str(n)
-                var = server.get_node(node)
-                await var.set_value(np.random.randint(100, size=1)[0], ua.VariantType.Int16)                
-
-            # random event
-            prob = [10, 20, 50, 100, 1000]
-            for n in range(5):
-                node = 'ns=2;i=20004'+str(n)
-                var = server.get_node(node)
-                event = np.random.rand(1)[0] < 1 / prob[n]
-                await var.set_value(event, ua.VariantType.Int16)
 
 if __name__ == '__main__':
-
     logging.basicConfig(level=logging.DEBUG)
     asyncio.run(main(), debug=True)
+    
