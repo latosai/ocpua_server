@@ -3,6 +3,7 @@ import asyncio
 import sys
 import numpy as np
 import datetime as dt
+import copy
 
 sys.path.insert(0, "..")
 
@@ -42,11 +43,40 @@ async def write_to_variables(server):
     # random event
     prob = [10, 20, 50, 100, 1000]
     for n in range(5):
-        node = 'ns=2;i=20004'+str(n)
+        node = 'ns=2;i=20004'+ str(n)
         var = server.get_node(node)
         event = np.random.rand(1)[0] < 1 / prob[n]
         await var.set_value(event, ua.VariantType.Int16)
         
+        
+    # random vibration
+    lim_max = 2000
+    n_hours = 3 # mean time to go from 0 to lim_max
+    rate = [1, 0.5, 0.4, 0.9, 0.2, 1, 0.1, 1, 0.7, 0.6]
+
+    for n in range(10):
+        node = 'ns=2;i=20005' + str(n)
+        var = server.get_node(node)
+        
+        base_value = await var.read_value()
+        base_value = copy.copy(base_value) / lim_max
+        
+        value = base_value + np.random.rand(1)[0] * 2 / (n_hours * 60 * 60) * rate[n]
+                    
+        if n == 0:
+            if base_value > 0.9:
+                reset = True
+            else:
+                reset = False
+                
+        if reset:
+            value = np.random.rand(1)[0] * 0.2
+            
+        if value > 1:
+            value = 1
+            
+        await var.set_value(value * lim_max, ua.VariantType.Float)
+
         
 async def main():
     _logger = logging.getLogger('asyncua')

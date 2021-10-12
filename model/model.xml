@@ -373,4 +373,142 @@
     </Value>
   </UAVariable>
 
+
+  <UAObject NodeId="ns=2;i=20005" BrowseName="0:Vibration" ParentNodeId="ns=2;i=2000">
+    <DisplayName>Vibration</DisplayName>
+    <References>
+      <Reference ReferenceType="Organizes" IsForward="false">ns=2;i=2000</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=58</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200050</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200051</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200052</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200053</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200054</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200055</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200056</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200057</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200058</Reference>
+      <Reference ReferenceType="HasComponent">ns=2;i=200059</Reference>
+    </References>
+  </UAObject>
+  
+  <UAVariable NodeId="ns=2;i=200050" BrowseName="0:Vibration0" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration0</DisplayName>
+    <Description>Vibration0</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+  
+  <UAVariable NodeId="ns=2;i=200051" BrowseName="0:Vibration1" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration1</DisplayName>
+    <Description>Vibration1</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200052" BrowseName="0:Vibration2" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration2</DisplayName>
+    <Description>Vibration2</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200053" BrowseName="0:Vibration3" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration3</DisplayName>
+    <Description>Vibration3</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200054" BrowseName="0:Vibration4" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration4</DisplayName>
+    <Description>Vibration4</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200055" BrowseName="0:Vibration5" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration5</DisplayName>
+    <Description>Vibration5</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200056" BrowseName="0:Vibration6" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration6</DisplayName>
+    <Description>Vibration6</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200057" BrowseName="0:Vibration7" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration7</DisplayName>
+    <Description>Vibration7</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200058" BrowseName="0:Vibration8" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration8</DisplayName>
+    <Description>Vibration8</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
+
+  <UAVariable NodeId="ns=2;i=200059" BrowseName="0:Vibration9" ParentNodeId="ns=2;i=20005" DataType="Float">
+    <DisplayName>Vibration9</DisplayName>
+    <Description>Vibration9</Description>
+    <References>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=2;i=20005</Reference>
+      <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
+    </References>
+    <Value>
+      <uax:Float>0</uax:Float>
+    </Value>
+  </UAVariable>
 </UANodeSet>
