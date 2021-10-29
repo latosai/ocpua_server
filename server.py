@@ -61,7 +61,7 @@ async def write_to_variables(server):
         base_value = await var.read_value()
         base_value = copy.copy(base_value) / lim_max
         
-        value = base_value + np.random.rand(1)[0] * 2 / (n_hours * 60 * 60) * rate[n]
+        value = base_value + np.random.rand(1)[0] * 2 / (n_hours * 60 * 60) * rate[n] + np.random.randn(1)[0] * rate[n] / 100
                     
         if n == 0:
             if base_value > 0.9:
@@ -74,6 +74,9 @@ async def write_to_variables(server):
             
         if value > 1:
             value = 1
+
+        if value < 0.05:
+            value = 0.05
             
         await var.set_value(value * lim_max, ua.VariantType.Float)
 
