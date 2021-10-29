@@ -1,5 +1,6 @@
 import logging
 import asyncio
+from math import e
 import sys
 import numpy as np
 import datetime as dt
@@ -10,9 +11,26 @@ sys.path.insert(0, "..")
 from asyncua import ua, Server
 from asyncua.common.methods import uamethod
 
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)-15s (Line %(lineno)d) -> %(message)s')
+_logger = logging.getLogger('asyncua')
+
 @uamethod
 def func(parent, value):
     return value * 2
+
+
+class SubHandler(object):
+
+    """
+    Subscription Handler. To receive events from server for a subscription
+    """
+
+    def datachange_notification(self, node, val, data):
+        _logger.info(f'Python: New data change event {node}, {val}')
+
+    def event_notification(self, event):
+        _logger.info(f"Python: New event {event}")
 
 
 async def write_to_variables(server):
@@ -77,9 +95,19 @@ async def write_to_variables(server):
             
         await var.set_value(value * lim_max, ua.VariantType.Float)
 
-        
+
+async def subscribe(server, nodes_from_xml):
+    handler = SubHandler()
+    sub = await server.create_subscription(1000, handler)
+    for node_id in nodes_from_xml:
+        node_obj = server.get_node(node_id)
+        try:
+            await sub.subscribe_data_change(node_obj)
+        except:
+            _logger.error(f'error subscribing to {node_obj}')
+    return handler, sub
+
 async def main():
-    _logger = logging.getLogger('asyncua')
     # setup our server
     server = Server()
     await server.init()
@@ -88,8 +116,10 @@ async def main():
     server.set_endpoint('opc.tcp://0.0.0.0:4840/freeopcua/server/')
     server.set_server_name('OPC-UA Latos')
     
-    await server.import_xml('model/model.xml')
+    nodes_from_xml = await server.import_xml('model/model.xml')
 
+    ## subscribes to node changes
+    handler, subscription = await subscribe(server, nodes_from_xml)
 
     server.set_security_policy([
             ua.SecurityPolicyType.NoSecurity,
