@@ -52,7 +52,7 @@ async def write_to_variables(server):
     # random vibration
     lim_max = 2000
     n_hours = 3 # mean time to go from 0 to lim_max
-    rate = [1, 0.5, 0.4, 0.9, 0.2, 1, 0.1, 1, 0.7, 0.6]
+    rate = [1, 0.5, 0.4, 0.9, 0.2, 1, 0.1, 0.8, 0.7, 0.6]
 
     for n in range(10):
         node = 'ns=2;i=20005' + str(n)
