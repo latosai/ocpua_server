@@ -31,7 +31,7 @@
     </References>
   </UAObject>
 
-  <UAVariable NodeId="ns=2;i=200010" BrowseName="Random0">
+  <UAVariable NodeId="ns=2;i=200010" BrowseName="Random0" DataType="Float">
     <DisplayName>Random0</DisplayName>
     <Description>Random0</Description>
     <References>
