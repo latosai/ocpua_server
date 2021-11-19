@@ -14,7 +14,7 @@ from asyncua import ua, Server, Node
 from asyncua.common.methods import uamethod
 
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)-15s (Line %(lineno)d) -> %(message)s')
+logging.basicConfig(level=logging.ERROR, format='%(asctime)-15s (Line %(lineno)d) -> %(message)s')
 _logger = logging.getLogger('asyncua')
 
 
