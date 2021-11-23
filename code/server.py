@@ -130,7 +130,7 @@ async def write_to_variables(server, idx):
     # random vibration
     lim_max = 2000
     n_hours = 3 # mean time to go from 0 to lim_max
-    rate = [1, 0.5, 0.4, 0.9, 0.2, 1, 0.1, 1, 0.7, 0.6]
+    rate = [1, 0.5, 0.4, 0.9, 0.2, 1, 0.1, 0.8, 0.7, 0.6]
 
     for n in range(10):
         node = 'ns=2;i=20005' + str(n)
@@ -139,8 +139,8 @@ async def write_to_variables(server, idx):
         base_value = await var.read_value()
         base_value = copy.copy(base_value) / lim_max
         
-        value = base_value + np.random.rand(1)[0] * 2 / (n_hours * 60 * 60) * rate[n]
-        print(value)   
+        value = base_value + np.random.rand(1)[0] * 2 / (n_hours * 60 * 60) * rate[n] + np.random.randn(1)[0] * rate[n] / 100
+                    
         if n == 0:
             if base_value > 0.9:
                 reset = True
@@ -152,6 +152,9 @@ async def write_to_variables(server, idx):
             
         if value > 1:
             value = 1
+
+        if value < 0.05:
+            value = 0.05
             
         await var.set_value(value * lim_max, ua.VariantType.Float)
 
