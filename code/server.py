@@ -44,8 +44,11 @@ async def calculate_sinusoidal(parent):
 
 @uamethod
 async def random_event(parent):
-    prob = [10, 20, 50, 100, 1000]
-    event = np.random.rand(1)[0] < 1 / random.choice(prob)
+    probs = [10, 20, 50, 100, 1000]
+    identifier = str(parent.Identifier)
+    prob = probs[int(identifier[-1])]
+    
+    event = np.random.rand(1)[0] < 1 / prob
     return event
 
 @uamethod
@@ -53,14 +56,15 @@ async def random_vibration(parent):
     lim_max = 2000
     n_hours = 3 # mean time to go from 0 to lim_max
     rate = [1, 0.5, 0.4, 0.9, 0.2, 1, 0.1, 1, 0.7, 0.6]
+    n = int(str(parent.Identifier)[-1])
 
     base_value = await server.get_node(parent).get_value()
     base_value = copy.copy(base_value) / lim_max
-    choice = random.choice(rate)
-    value = base_value + np.random.rand(1)[0] * 2 / (n_hours * 60 * 60) * choice
     
+    value = base_value + np.random.rand(1)[0] * 2 / (n_hours * 60 * 60) * rate[n] + np.random.randn(1)[0] * rate[n] / 100
+
     reset = False
-    if choice == rate[0]:
+    if n == 0:
         if base_value > 0.9:
             reset = True
         else:
@@ -72,10 +76,12 @@ async def random_vibration(parent):
     if value > 1:
         value = 1
 
-    return value
+    if value < 0.05:
+        value = 0.05
+
+    return value * lim_max
 
 class SubHandler(object):
-
     """
     Subscription Handler. To receive events from server for a subscription
     """
