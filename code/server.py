@@ -204,13 +204,13 @@ async def main():
     server = Server()
     await server.init()
 
-    # # setup our own namespace, not really necessary but should as spec
+    # setup our own namespace, not really necessary but should as spec
     server.set_endpoint('opc.tcp://0.0.0.0:4840/freeopcua/server/')
     server.set_server_name('OPC-UA Latos')
     
     nodes_from_xml = await server.import_xml('model/model.xml')
 
-    ## subscribes to node changes
+    # subscribes to node changes
     handler, subscription, node_objects = await subscribe(server, nodes_from_xml)
 
     server.set_security_policy([
@@ -218,13 +218,11 @@ async def main():
             ua.SecurityPolicyType.Basic256Sha256_SignAndEncrypt,
             ua.SecurityPolicyType.Basic256Sha256_Sign])
         
-    # idx = await server.get_namespace_index("urn:freeopcua:python:server")
 
     # setup our own namespace
     uri = "http://examples.freeopcua.github.io"
     idx = await server.register_namespace(uri)
     idx = await server.get_namespace_index(uri)
-    # dev = await server.nodes.objects.add_object(idx, 'Simulator')
     
     _logger.info(nodes_from_xml)
     _logger.info('Starting server!')
@@ -239,10 +237,6 @@ async def main():
                 await run_function(node, idx)
             await asyncio.sleep(1)
             
-            #async_write = asyncio.create_task(write_to_variables(server, idx))
-            #await async_write       
-            #async_write.cancel()
-
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
