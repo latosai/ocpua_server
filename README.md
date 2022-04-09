@@ -1,16 +1,14 @@
-# Opcua Server
+# OPC-UA Server Exemplo 
 
-## Instalação
-
-sudo apt update
-sudo apt upgrade
+This repository is a simple OPC-UA server created with [opcua-asyncio](https://github.com/FreeOpcUa/opcua-asyncio) library in Python.
 
 
-### Clonar o repositório
+## Run the OPC-UA Server
+1. Clone repository
 
-`https://gitlab.com/latosai/opcua_server.git`
+`git clone https://gitlab.com/latosai/opcua_server.git`
 
-### Iniciar ambiente virtual
+2. Prepare Virtual Environment 
 
 `sudo apt install python3-venv`
 
@@ -18,11 +16,16 @@ sudo apt upgrade
 
 `source venv/bin/activate`
 
-### Instalar bibliotecas
+3.  Install requirements
 
 `pip install -r requirements.txt`
 
-## Screen Linux
-Para manter o servidor OPC-UA rodando mesmo depois de fechar o terminal local, é necessário utilizar o screen linux.
+4. Run server
+`cd code`
 
-https://linuxize.com/post/how-to-use-linux-screen/
+`python3 server.py`
+
+
+## Run the OPC-UA Server as a Docker Container
+
+<todo>
